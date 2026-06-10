@@ -2,6 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import { RootLayout } from "./components/layout/RootLayout";
 import { Home } from "./pages/Home";
 import { Sobre } from "./pages/Sobre";
+import { Contato } from "./pages/Contato";
+import { Servicos } from "./pages/Servicos";
+import { ProjetoArquitetonico } from "./pages/ProjetoArquitetonico";
+import { Blog } from "./pages/Blog";
+import { BlogPost } from "./pages/BlogPost";
 import { ComponentLibrary } from "./pages/ComponentLibrary";
 
 export default function App() {
@@ -14,6 +19,11 @@ export default function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="sobre-nos" element={<Sobre />} />
+        <Route path="servicos" element={<Servicos />} />
+        <Route path="servicos/projeto-arquitetonico" element={<ProjetoArquitetonico />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="blog/:slug" element={<BlogPost />} />
+        <Route path="contato" element={<Contato />} />
       </Route>
     </Routes>
   );

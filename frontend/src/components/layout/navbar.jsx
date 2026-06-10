@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "../../utils/cn";
@@ -11,12 +12,24 @@ const navLinks = [
 ];
 
 const serviceItems = [
-  { label: "Projetos de Engenharia", href: "#" },
-  { label: "Consultoria e Laudos", href: "#" },
-  { label: "Gerenciamento de Obras", href: "#" },
+  { label: "Serviços Globais", href: "/servicos" },
+  { label: "Projetos Arquitetônicos", href: "/servicos/projeto-arquitetonico" },
+  { label: "Projetos Hidrossanitários", href: "/servicos#hidrossanitarios" },
+  { label: "Projetos Elétricos", href: "/servicos#eletricos" },
+  { label: "Combate a Incêndio", href: "/servicos#incendio" },
+  { label: "Infraestrutura", href: "/servicos#infraestrutura" },
+  { label: "Estrutura Metálica", href: "/servicos#metalica" },
+  { label: "Estruturais de Concreto", href: "/servicos#concreto" },
+  { label: "BIM", href: "/servicos#bim" },
+  { label: "Ensaios Não Destrutivos", href: "/servicos#ensaios" },
 ];
 
+const solidRoutes = ["/blog", "/contato"];
+
 export function Navbar({ inline = false, className }) {
+  const location = useLocation();
+  const forceSolid = solidRoutes.some((r) => location.pathname.startsWith(r));
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -32,7 +45,7 @@ export function Navbar({ inline = false, className }) {
     <nav
       className={cn(
         "w-full flex items-center justify-between px-6 py-4 rounded-[15px] border-[0.518px] border-solid border-black transition-all duration-500",
-        scrolled
+        scrolled || forceSolid
           ? "bg-[rgba(33,31,31,0.85)] backdrop-blur-[16px] shadow-lg"
           : "bg-[rgba(33,31,31,0.30)] backdrop-blur-[5.18px]",
         inline ? "relative" : "sticky top-4 z-50",
@@ -70,7 +83,7 @@ export function Navbar({ inline = false, className }) {
           onMouseEnter={() => setServicesOpen(true)}
           onMouseLeave={() => setServicesOpen(false)}
         >
-          <button className="flex items-center gap-1 px-3 py-2 font-sans text-[14px] text-white/90 hover:text-white transition-colors duration-300 border-b-2 border-transparent hover:border-primary/50 cursor-default">
+          <a href="/servicos" className="flex items-center gap-1 px-3 py-2 font-sans text-[14px] text-white/90 hover:text-white transition-colors duration-300 border-b-2 border-transparent hover:border-primary/50 cursor-pointer">
             Serviços
             <ChevronDown
               className={cn(
@@ -78,7 +91,7 @@ export function Navbar({ inline = false, className }) {
                 servicesOpen && "rotate-180"
               )}
             />
-          </button>
+          </a>
 
           <AnimatePresence>
             {servicesOpen && (
@@ -108,9 +121,11 @@ export function Navbar({ inline = false, className }) {
 
       {/* Desktop CTA */}
       <div className="hidden md:block">
-        <Button variant="primary" className="text-[14px] px-6 py-2.5">
-          Contato <ArrowUpRight className="w-4 h-4" />
-        </Button>
+        <a href="/contato">
+          <Button variant="primary" className="text-[14px] px-6 py-2.5">
+            Contato <ArrowUpRight className="w-4 h-4" />
+          </Button>
+        </a>
       </div>
 
       {/* Mobile Hamburger */}
@@ -157,18 +172,27 @@ export function Navbar({ inline = false, className }) {
               })}
 
               {/* Mobile Services Accordion */}
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="flex items-center justify-between px-4 py-3 font-sans text-[15px] text-white/80 hover:text-white rounded-lg transition-colors duration-200 hover:bg-white/5"
-              >
-                Serviços
-                <ChevronDown
-                  className={cn(
-                    "w-4 h-4 transition-transform duration-300",
-                    servicesOpen && "rotate-180"
-                  )}
-                />
-              </button>
+              <div className="flex items-center justify-between pr-2 rounded-lg transition-colors duration-200 hover:bg-white/5">
+                <a
+                  href="/servicos"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex-1 px-4 py-3 font-sans text-[15px] text-white/80 hover:text-white"
+                >
+                  Serviços
+                </a>
+                <button
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  className="p-3 text-white/80 hover:text-white"
+                  aria-label="Alternar subsetores de serviços"
+                >
+                  <ChevronDown
+                    className={cn(
+                      "w-4 h-4 transition-transform duration-300",
+                      servicesOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+              </div>
 
               <AnimatePresence>
                 {servicesOpen && (
@@ -197,13 +221,14 @@ export function Navbar({ inline = false, className }) {
 
               {/* Mobile CTA */}
               <div className="pt-3 mt-2 border-t border-white/10">
-                <Button
-                  variant="primary"
-                  className="w-full text-[14px]"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Contato <ArrowUpRight className="w-4 h-4" />
-                </Button>
+                <a href="/contato" onClick={() => setMobileOpen(false)}>
+                  <Button
+                    variant="primary"
+                    className="w-full text-[14px]"
+                  >
+                    Contato <ArrowUpRight className="w-4 h-4" />
+                  </Button>
+                </a>
               </div>
             </div>
           </motion.div>

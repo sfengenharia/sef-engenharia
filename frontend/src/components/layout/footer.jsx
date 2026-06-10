@@ -13,7 +13,7 @@ export function Footer({ className }) {
         className
       )}
     >
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         {/* Coluna 1: Logo */}
         <div className="flex flex-col items-start gap-4">
           <a href="/" className="flex items-center shrink-0">
@@ -27,15 +27,33 @@ export function Footer({ className }) {
           <div className="flex flex-col gap-3">
             <TextLink href="/" className="text-white/80 hover:text-white">Início</TextLink>
             <TextLink href="/sobre-nos" className="text-white/80 hover:text-white">Sobre nós</TextLink>
-            <TextLink href="#" className="text-white/80 hover:text-white">Serviços</TextLink>
+            <TextLink href="/servicos" className="text-white/80 hover:text-white">Serviços</TextLink>
             <TextLink href="/blog" className="text-white/80 hover:text-white">Blog</TextLink>
           </div>
-          <Button variant="primary" className="mt-8 text-sm">
-            Contato <ArrowUpRight className="w-4 h-4 ml-2" />
-          </Button>
+          <a href="/contato">
+            <Button variant="primary" className="mt-8 text-sm">
+              Contato <ArrowUpRight className="w-4 h-4 ml-2" />
+            </Button>
+          </a>
         </div>
 
-        {/* Coluna 3: Legal */}
+        {/* Coluna 3: Serviços */}
+        <div className="flex flex-col items-start">
+          <h4 className="text-primary font-semibold text-lg mb-6">Serviços</h4>
+          <div className="flex flex-col gap-3">
+            <TextLink href="/servicos/projeto-arquitetonico" className="text-white/80 hover:text-white">Projetos Arquitetônicos</TextLink>
+            <TextLink href="/servicos#hidrossanitarios" className="text-white/80 hover:text-white">Projetos Hidrossanitários</TextLink>
+            <TextLink href="/servicos#eletricos" className="text-white/80 hover:text-white">Projetos Elétricos</TextLink>
+            <TextLink href="/servicos#incendio" className="text-white/80 hover:text-white">Combate a Incêndio</TextLink>
+            <TextLink href="/servicos#infraestrutura" className="text-white/80 hover:text-white">Infraestrutura</TextLink>
+            <TextLink href="/servicos#metalica" className="text-white/80 hover:text-white">Estrutura Metálica</TextLink>
+            <TextLink href="/servicos#concreto" className="text-white/80 hover:text-white">Estruturais de Concreto</TextLink>
+            <TextLink href="/servicos#bim" className="text-white/80 hover:text-white">BIM</TextLink>
+            <TextLink href="/servicos#ensaios" className="text-white/80 hover:text-white">Ensaios Não Destrutivos</TextLink>
+          </div>
+        </div>
+
+        {/* Coluna 4: Legal */}
         <div className="flex flex-col items-start">
           <h4 className="text-primary font-semibold text-lg mb-6">Legal</h4>
           <div className="flex flex-col gap-3">
@@ -45,7 +63,7 @@ export function Footer({ className }) {
           </div>
         </div>
 
-        {/* Coluna 4: Newsletter */}
+        {/* Coluna 5: Newsletter */}
         <div className="flex flex-col items-start">
           <h4 className="text-primary font-semibold text-lg mb-6">Fique por dentro</h4>
           <p className="text-sm text-white/60 mb-4">
