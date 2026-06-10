@@ -5,6 +5,7 @@ import { AboutHighlightsSection } from "../components/sections/about-highlights-
 import { AboutValuesSection } from "../components/sections/about-values-section";
 import { AboutPillarsSection } from "../components/sections/about-pillars-section";
 import { FinalCtaSection } from "../components/sections/final-cta-section";
+import { RecentPostsSection } from "../components/sections/recent-posts-section";
 
 export function Sobre() {
   return (
@@ -14,6 +15,7 @@ export function Sobre() {
       <AboutHighlightsSection />
       <AboutValuesSection />
       <AboutPillarsSection />
+      <RecentPostsSection />
       <FinalCtaSection />
     </main>
   );
