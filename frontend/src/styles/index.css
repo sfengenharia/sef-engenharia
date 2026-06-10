@@ -1,0 +1,163 @@
+/* ==========================================================================
+   S&F Engenharia — CSS Global
+   Tailwind v4 (config CSS-first). Os tokens do Design System vivem no @theme
+   abaixo, extraídos de DESIGN.md. Montserrat é a fonte única da hierarquia.
+   ========================================================================== */
+
+/* Fonte única da marca — Montserrat (400/500/600/700/800 + itálico 800 p/ o acento do hero) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  /* ----- Cores: o amarelo é a única voltagem cromática (ação, nunca fundo de leitura) ----- */
+  --color-primary: #fab50f;
+  --color-primary-hover: #db9206;
+  --color-primary-pressed: #b76e08;
+  --color-primary-soft: #fff3c4;
+  --color-primary-subtle: #fffbea;
+
+  /* Superfície */
+  --color-canvas: #ffffff;
+  --color-surface-muted: #f1f1f1;
+  --color-surface-dark: #211f1f;
+  --color-surface-card: #ffffff;
+
+  /* Texto */
+  --color-ink: #211f1f;
+  --color-body: #475569;
+  --color-muted: #64748b;
+  --color-on-dark-muted: #cbd5e1;
+
+  /* Hairlines */
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* Semântica */
+  --color-success: #22c55e;
+  --color-destructive: #dc2626;
+  --color-warning: #f59e0b;
+
+  /* On-Surface */
+  --color-on-primary: #211f1f; /* texto sobre o botão amarelo é ESCURO (regra) */
+  --color-on-dark: #ffffff;
+
+  /* ----- Tipografia: Montserrat em toda a hierarquia (peso + tamanho, não família) ----- */
+  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+
+  --text-display: 60px;
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -1.5px;
+  --text-display--font-weight: 800;
+
+  --text-h1: 48px;
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -1.2px;
+  --text-h1--font-weight: 800;
+
+  --text-h2: 36px;
+  --text-h2--line-height: 1.11;
+  --text-h2--letter-spacing: -0.9px;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 30px;
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.75px;
+  --text-h3--font-weight: 700;
+
+  --text-h4: 24px;
+  --text-h4--line-height: 1.33;
+  --text-h4--letter-spacing: -0.6px;
+  --text-h4--font-weight: 700;
+
+  --text-lead: 20px;
+  --text-lead--line-height: 1.4;
+  --text-lead--letter-spacing: -0.6px;
+  --text-lead--font-weight: 400;
+
+  --text-blockquote: 18px;
+  --text-blockquote--line-height: 1.55;
+  --text-blockquote--letter-spacing: 0;
+  --text-blockquote--font-weight: 500;
+
+  --text-p: 16px;
+  --text-p--line-height: 1.75;
+  --text-p--letter-spacing: 0;
+  --text-p--font-weight: 400;
+
+  --text-body-medium: 16px;
+  --text-body-medium--line-height: 1.5;
+  --text-body-medium--letter-spacing: 0;
+  --text-body-medium--font-weight: 500;
+
+  --text-nav-link: 16px;
+  --text-nav-link--line-height: 1;
+  --text-nav-link--letter-spacing: 0;
+  --text-nav-link--font-weight: 500;
+
+  --text-button-md: 16px;
+  --text-button-md--line-height: 1;
+  --text-button-md--letter-spacing: 0;
+  --text-button-md--font-weight: 600;
+
+  --text-button-sm: 14px;
+  --text-button-sm--line-height: 1;
+  --text-button-sm--letter-spacing: 0;
+  --text-button-sm--font-weight: 600;
+
+  --text-small: 14px;
+  --text-small--line-height: 1.43;
+  --text-small--letter-spacing: 0;
+  --text-small--font-weight: 400;
+
+  --text-eyebrow: 14px;
+  --text-eyebrow--line-height: 1.14;
+  --text-eyebrow--letter-spacing: 0.5px;
+  --text-eyebrow--font-weight: 600;
+
+  --text-label: 14px;
+  --text-label--line-height: 1.43;
+  --text-label--letter-spacing: 0;
+  --text-label--font-weight: 500;
+
+  --text-inline-code: 14px;
+  --text-inline-code--line-height: 1.43;
+  --text-inline-code--letter-spacing: 0;
+  --text-inline-code--font-weight: 400;
+
+  /* ----- Border radius ----- */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-base: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+
+  /* ----- Spacing nomeado (coexiste com a escala numérica do Tailwind) ----- */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-section: 96px;
+
+  /* ----- Elevação: contida; o foco é a troca de superfície, não a sombra ----- */
+  --shadow-sm: 0 1px 2px 0 #0000000d;
+  --shadow-md: 0 2px 4px -2px #0000001a, 0 4px 6px -1px #0000001a;
+  --shadow-lg: 0 4px 6px -4px #0000001a, 0 10px 15px -3px #0000001a;
+  --shadow-xl: 0 8px 10px -6px #0000001a, 0 20px 25px -5px #0000001a;
+  /* Anel de foco duplo (offset branco + anel amarelo) — acessibilidade, não remover */
+  --shadow-focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px #fab50f;
+}
+
+@layer base {
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+  }
+}
