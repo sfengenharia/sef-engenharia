@@ -52,10 +52,10 @@ export function HeroSection() {
           {/* Título H1 */}
           <motion.h1
             variants={itemVariants}
-            className="w-full font-sans font-bold text-4xl md:text-5xl lg:text-[60px] leading-[1.1] text-white tracking-tight"
+            className="w-full font-sans font-semibold text-4xl md:text-5xl lg:text-[60px] leading-[1.1] text-white tracking-tight"
           >
             Engenharia multidisciplinar que resolve.{" "}
-            <span className="font-sans italic text-primary">Do projeto à entrega, no prazo.</span>
+            <span className="font-sans font-semibold italic text-primary">Do projeto à entrega, no prazo.</span>
           </motion.h1>
 
           {/* Textos */}

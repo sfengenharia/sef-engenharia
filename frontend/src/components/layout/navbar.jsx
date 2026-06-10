@@ -5,8 +5,9 @@ import { cn } from "../../utils/cn";
 import { Button } from "../ui/button";
 
 const navLinks = [
-  { label: "Início", href: "#", active: true },
-  { label: "Sobre nós", href: "#" },
+  { label: "Início", href: "/" },
+  { label: "Sobre nós", href: "/sobre-nos" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const serviceItems = [
@@ -45,20 +46,23 @@ export function Navbar({ inline = false, className }) {
 
       {/* Desktop Navigation (hidden on mobile) */}
       <div className="hidden md:flex items-center gap-1">
-        {navLinks.map((link) => (
+        {navLinks.map((link) => {
+          const isActive = window.location.pathname === link.href;
+          return (
           <a
             key={link.label}
             href={link.href}
             className={cn(
               "px-3 py-2 font-sans text-[14px] text-white/90 hover:text-white transition-colors duration-300 border-b-2",
-              link.active
+              isActive
                 ? "border-primary"
                 : "border-transparent hover:border-primary/50"
             )}
           >
             {link.label}
           </a>
-        ))}
+          );
+        })}
 
         {/* Services Dropdown */}
         <div
@@ -133,21 +137,24 @@ export function Navbar({ inline = false, className }) {
             className="absolute top-full left-0 right-0 mt-2 bg-surface-dark/95 backdrop-blur-md border border-white/10 rounded-xl shadow-xl overflow-hidden md:hidden z-50"
           >
             <div className="flex flex-col p-4 gap-1">
-              {navLinks.map((link) => (
+              {navLinks.map((link) => {
+                const isActive = window.location.pathname === link.href;
+                return (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
                     "px-4 py-3 font-sans text-[15px] rounded-lg transition-colors duration-200",
-                    link.active
+                    isActive
                       ? "text-primary font-semibold bg-primary/10"
                       : "text-white/80 hover:text-white hover:bg-white/5"
                   )}
                 >
                   {link.label}
                 </a>
-              ))}
+                );
+              })}
 
               {/* Mobile Services Accordion */}
               <button

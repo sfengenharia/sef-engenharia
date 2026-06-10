@@ -25,9 +25,10 @@ export function Footer({ className }) {
         <div className="flex flex-col items-start">
           <h4 className="text-primary font-semibold text-lg mb-6">Links Rápidos</h4>
           <div className="flex flex-col gap-3">
-            <TextLink href="#" className="text-white/80 hover:text-white">Início</TextLink>
-            <TextLink href="#" className="text-white/80 hover:text-white">Sobre nós</TextLink>
+            <TextLink href="/" className="text-white/80 hover:text-white">Início</TextLink>
+            <TextLink href="/sobre-nos" className="text-white/80 hover:text-white">Sobre nós</TextLink>
             <TextLink href="#" className="text-white/80 hover:text-white">Serviços</TextLink>
+            <TextLink href="/blog" className="text-white/80 hover:text-white">Blog</TextLink>
           </div>
           <Button variant="primary" className="mt-8 text-sm">
             Contato <ArrowUpRight className="w-4 h-4 ml-2" />

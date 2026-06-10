@@ -40,31 +40,31 @@ typography:
   display:
     fontFamily: "'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
     fontSize: 60px
-    fontWeight: 800
+    fontWeight: 600
     lineHeight: 1.0
     letterSpacing: -1.5px
   h1:
     fontFamily: "'Montserrat', system-ui, sans-serif"
     fontSize: 48px
-    fontWeight: 800
+    fontWeight: 600
     lineHeight: 1.0
     letterSpacing: -1.2px
   h2:
     fontFamily: "'Montserrat', system-ui, sans-serif"
     fontSize: 36px
-    fontWeight: 700
+    fontWeight: 600
     lineHeight: 1.11
     letterSpacing: -0.9px
   h3:
     fontFamily: "'Montserrat', system-ui, sans-serif"
     fontSize: 30px
-    fontWeight: 700
+    fontWeight: 600
     lineHeight: 1.2
     letterSpacing: -0.75px
   h4:
     fontFamily: "'Montserrat', system-ui, sans-serif"
     fontSize: 24px
-    fontWeight: 700
+    fontWeight: 600
     lineHeight: 1.33
     letterSpacing: -0.6px
   lead:
@@ -233,7 +233,7 @@ components:
     scrimOverlay: "linear-gradient(90deg, #211f1fcc, #211f1f66)"
     headlineColor: "{colors.on-dark}"
     headlineAccentColor: "{colors.primary}"
-    headlineAccentStyle: italic
+    headlineAccentStyle: "italic (weight: 600 / semibold)"
     headlineTypography: "{typography.display}"
     subheadColor: "{colors.on-dark-muted}"
     subheadTypography: "{typography.lead}"
@@ -473,6 +473,8 @@ A grade de conteúdo é tipicamente de duas colunas (texto + imagem, ou checklis
 
 A barra de stats (4 itens: +14 anos, 9 especialidades, 100% BIM, +1000 clientes) é um padrão recorrente logo abaixo de cada hero, sempre com ícone amarelo + número em `ink` + label em `muted`.
 
+**Regra obrigatória — cabeçalho de seção centralizado (nunca "espremer" texto):** parágrafos e blocos de texto longos **nunca** podem ficar comprimidos (uma palavra por linha). A causa clássica é colocar um `<p>` como filho direto de um container `flex flex-col items-center`, que faz o bloco encolher até o `min-content`. Para cabeçalhos centralizados, o texto longo **deve** receber largura explícita: use `w-full max-w-2xl mx-auto text-center` no parágrafo (ou monte o cabeçalho como container `block` com `text-center`, sem `items-center`). O `items-center` é seguro apenas para conteúdo curto/wide (eyebrow, headline). Vale para **todas** as seções.
+
 ## Elevation
 
 A elevação é contida — coerente com um visual que prefere troca de superfície a sombra pesada. Cards sobre fundo claro usam `shadow-sm` ou nenhuma sombra, confiando na hairline `border` para definição. `shadow-md` e `shadow-lg` ficam reservados para o card de formulário e popovers eventuais. As sombras seguem a escala Tailwind dos tokens (opacidades de 0x0d a 0x1a sobre preto).
@@ -584,6 +586,14 @@ Linha de contato: ícone amarelo + rótulo `h4` (WhatsApp, E-mail, Endereço) + 
 
 ### feature-list-check
 Lista de garantias com check **verde** (`success`): título `body-medium` + descrição `small`. Usada só na seção de parceiros (CBMM), onde o verde sinaliza conformidade/validação — único uso intencional de verde no sistema.
+
+### blog-card
+Card de artigo usado na seção de posts recentes (`recent-posts-section`). Diferente dos cards de borda lateral, segue a estética de "card de conteúdo": fundo claro (`{colors.canvas}`), hairline sutil (`border` a 60% de opacidade), cantos `{rounded.2xl}` e elevação contida (`{elevation.shadow-sm}`). Estrutura vertical: imagem no topo em proporção fixa **16:9** (`aspect-video`, cantos `{rounded.xl}`), seguida de data, título e excerto.
+- **Data:** rótulo curto em amarelo (`{colors.primary}`), uppercase com tracking largo — assinatura editorial da marca.
+- **Título:** `text-lg` semibold em `{colors.ink}`.
+- **Excerto:** `text-sm` em `ink` a 70% de opacidade, `leading-relaxed`.
+- **Hover (obrigatório):** a elevação sobe de `shadow-sm` para `shadow-md` e a imagem recebe um zoom suave (`group-hover:scale-105`), reforçando a precisão e sobriedade do conteúdo técnico.
+Props: `image`, `title`, `excerpt`, `date`, `className`.
 
 ## Responsive Behavior
 
