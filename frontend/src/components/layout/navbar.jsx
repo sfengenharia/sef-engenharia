@@ -12,16 +12,15 @@ const navLinks = [
 ];
 
 const serviceItems = [
-  { label: "Serviços Globais", href: "/servicos" },
   { label: "Projetos Arquitetônicos", href: "/servicos/projeto-arquitetonico" },
-  { label: "Projetos Hidrossanitários", href: "/servicos#hidrossanitarios" },
-  { label: "Projetos Elétricos", href: "/servicos#eletricos" },
-  { label: "Combate a Incêndio", href: "/servicos#incendio" },
-  { label: "Infraestrutura", href: "/servicos#infraestrutura" },
-  { label: "Estrutura Metálica", href: "/servicos#metalica" },
-  { label: "Estruturais de Concreto", href: "/servicos#concreto" },
-  { label: "BIM", href: "/servicos#bim" },
-  { label: "Ensaios Não Destrutivos", href: "/servicos#ensaios" },
+  { label: "Projetos Hidrossanitários", href: "/servicos/projeto-hidrossanitario" },
+  { label: "Projetos Elétricos", href: "/servicos/projeto-eletrico" },
+  { label: "Combate a Incêndio", href: "/servicos/projeto-combate-incendio" },
+  { label: "Infraestrutura", href: "/servicos/projeto-infraestrutura" },
+  { label: "Estrutura Metálica", href: "/servicos/projeto-estrutura-metalica" },
+  { label: "Estruturais de Concreto", href: "/servicos/projeto-estrutural-concreto" },
+  { label: "BIM", href: "/servicos/bim" },
+  { label: "Ensaios Não Destrutivos", href: "/servicos/ensaios-nao-destrutivos" },
 ];
 
 const solidRoutes = ["/blog", "/contato"];

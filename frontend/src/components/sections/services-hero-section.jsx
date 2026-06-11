@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "../ui/eyebrow";
 import { Button } from "../ui/button";
@@ -69,9 +70,11 @@ export function ServicesHeroSection() {
           </motion.p>
 
           <motion.div variants={itemVariants}>
-            <Button variant="primary" className="mt-10">
-              Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
-            </Button>
+            <Link to="/contato" className="block w-fit mt-10">
+              <Button variant="primary">
+                Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

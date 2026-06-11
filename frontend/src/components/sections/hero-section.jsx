@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Eyebrow } from "../ui/eyebrow";
 import { Button } from "../ui/button";
@@ -70,12 +71,16 @@ export function HeroSection() {
 
           {/* Botões */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full pt-2">
-            <Button variant="primary" className="w-full sm:w-auto px-8 py-3 text-[15px]">
-              Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button variant="secondary" className="w-full sm:w-auto px-8 py-3 text-[15px]">
-              Conheça nossos serviços
-            </Button>
+            <Link to="/contato" className="w-full sm:w-auto block">
+              <Button variant="primary" className="w-full sm:w-auto px-8 py-3 text-[15px]">
+                Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+            <Link to="/servicos" className="w-full sm:w-auto block">
+              <Button variant="secondary" className="w-full sm:w-auto px-8 py-3 text-[15px]">
+                Conheça nossos serviços
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Logos - AJUSTE: Reduzido o 'h-' (altura) para ficarem mais proporcionais e sutis */}

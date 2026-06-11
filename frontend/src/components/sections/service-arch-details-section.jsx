@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, TriangleAlert } from "lucide-react";
 import { Button } from "../ui/button";
 import { SpecHeader } from "../ui/spec-header";
@@ -80,9 +81,11 @@ export function ServiceArchDetailsSection() {
 
           {/* CTA Button */}
           <motion.div variants={itemVariants} className="mt-16 flex justify-center">
-            <Button variant="primary">
-              Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
-            </Button>
+            <Link to="/contato">
+              <Button variant="primary">
+                Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </motion.div>
 
         </motion.div>

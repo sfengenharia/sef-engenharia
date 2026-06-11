@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Eyebrow } from "../ui/eyebrow";
 import { HighlightBlock } from "../ui/highlight-block";
@@ -56,9 +57,11 @@ export function ServicesIntroSection() {
               Da fundação ao combate a incêndio, nós dominamos todas as etapas do seu projeto garantindo uma integração nativa e minimizando problemas na obra.
             </HighlightBlock>
 
-            <Button variant="primary">
-              Ver todos os serviços <ArrowUpRight className="w-4 h-4 ml-2" />
-            </Button>
+            <Link to="/servicos" className="block w-fit">
+              <Button variant="primary">
+                Ver todos os serviços <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

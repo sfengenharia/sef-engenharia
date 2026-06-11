@@ -42,14 +42,14 @@ export function Footer({ className }) {
           <h4 className="text-primary font-semibold text-lg mb-6">Serviços</h4>
           <div className="flex flex-col gap-3">
             <TextLink href="/servicos/projeto-arquitetonico" className="text-white/80 hover:text-white">Projetos Arquitetônicos</TextLink>
-            <TextLink href="/servicos#hidrossanitarios" className="text-white/80 hover:text-white">Projetos Hidrossanitários</TextLink>
-            <TextLink href="/servicos#eletricos" className="text-white/80 hover:text-white">Projetos Elétricos</TextLink>
-            <TextLink href="/servicos#incendio" className="text-white/80 hover:text-white">Combate a Incêndio</TextLink>
-            <TextLink href="/servicos#infraestrutura" className="text-white/80 hover:text-white">Infraestrutura</TextLink>
-            <TextLink href="/servicos#metalica" className="text-white/80 hover:text-white">Estrutura Metálica</TextLink>
-            <TextLink href="/servicos#concreto" className="text-white/80 hover:text-white">Estruturais de Concreto</TextLink>
-            <TextLink href="/servicos#bim" className="text-white/80 hover:text-white">BIM</TextLink>
-            <TextLink href="/servicos#ensaios" className="text-white/80 hover:text-white">Ensaios Não Destrutivos</TextLink>
+            <TextLink href="/servicos/projeto-hidrossanitario" className="text-white/80 hover:text-white">Projetos Hidrossanitários</TextLink>
+            <TextLink href="/servicos/projeto-eletrico" className="text-white/80 hover:text-white">Projetos Elétricos</TextLink>
+            <TextLink href="/servicos/projeto-combate-incendio" className="text-white/80 hover:text-white">Combate a Incêndio</TextLink>
+            <TextLink href="/servicos/projeto-infraestrutura" className="text-white/80 hover:text-white">Infraestrutura</TextLink>
+            <TextLink href="/servicos/projeto-estrutura-metalica" className="text-white/80 hover:text-white">Estrutura Metálica</TextLink>
+            <TextLink href="/servicos/projeto-estrutural-concreto" className="text-white/80 hover:text-white">Estruturais de Concreto</TextLink>
+            <TextLink href="/servicos/bim" className="text-white/80 hover:text-white">BIM</TextLink>
+            <TextLink href="/servicos/ensaios-nao-destrutivos" className="text-white/80 hover:text-white">Ensaios Não Destrutivos</TextLink>
           </div>
         </div>
 
@@ -57,9 +57,9 @@ export function Footer({ className }) {
         <div className="flex flex-col items-start">
           <h4 className="text-primary font-semibold text-lg mb-6">Legal</h4>
           <div className="flex flex-col gap-3">
-            <TextLink href="#" className="text-white/80 hover:text-white">Políticas de Privacidade</TextLink>
-            <TextLink href="#" className="text-white/80 hover:text-white">Termos de Serviço</TextLink>
-            <TextLink href="#" className="text-white/80 hover:text-white">Uso de Cookies</TextLink>
+            <TextLink href="/politica-de-privacidade" className="text-white/80 hover:text-white">Políticas de Privacidade</TextLink>
+            <TextLink href="/termos-de-uso" className="text-white/80 hover:text-white">Termos de Serviço</TextLink>
+            <TextLink href="/politica-de-privacidade#cookies" className="text-white/80 hover:text-white">Uso de Cookies</TextLink>
           </div>
         </div>
 

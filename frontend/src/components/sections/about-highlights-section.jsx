@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import imgHighlights from "../../assets/sobrenos-img3.png";
 
@@ -77,9 +78,11 @@ export function AboutHighlightsSection() {
         </motion.p>
 
         <motion.div variants={itemVariants}>
-          <Button variant="primary">
-            Ver todos os serviços <ArrowUpRight className="w-4 h-4 ml-2" />
-          </Button>
+          <Link to="/servicos" className="block w-fit">
+            <Button variant="primary">
+              Ver todos os serviços <ArrowUpRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
         </motion.div>
 
       </motion.div>

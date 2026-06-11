@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Eyebrow } from "../ui/eyebrow";
 import { Button } from "../ui/button";
@@ -94,9 +95,11 @@ export function WhyChooseUsSection() {
             <div>
               <h3 className="text-ink font-bold text-2xl mb-2">Mais de 14 anos</h3>
               <p className="text-ink/80 text-sm mb-6">Entregando para indústrias, mineradoras e construtoras no Brasil.</p>
-              <Button variant="primary" className="w-fit mt-6">
-                Saiba mais <ArrowUpRight className="w-4 h-4 ml-2" />
-              </Button>
+              <Link to="/sobre-nos" className="block w-fit mt-6">
+                <Button variant="primary">
+                  Saiba mais <ArrowUpRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
             </div>
           </motion.div>
 

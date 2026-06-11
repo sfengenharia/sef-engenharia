@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Eyebrow } from "../ui/eyebrow";
 import { Button } from "../ui/button";
@@ -80,9 +81,11 @@ export function CtaSection() {
           </motion.p>
 
           <motion.div variants={itemVariants}>
-            <Button variant="primary" className="w-fit">
-              Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
-            </Button>
+            <Link to="/contato" className="block w-fit">
+              <Button variant="primary">
+                Solicitar orçamento <ArrowUpRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

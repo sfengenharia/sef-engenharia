@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Eyebrow } from "../ui/eyebrow";
 import { Button } from "../ui/button";
@@ -110,9 +111,11 @@ export function RecentPostsSection() {
           viewport={{ once: true }}
           className="flex justify-center mt-16"
         >
-          <Button variant="primary">
-            Ver todos os artigos <ArrowUpRight className="w-4 h-4 ml-2" />
-          </Button>
+          <Link to="/blog">
+            <Button variant="primary">
+              Ver todos os artigos <ArrowUpRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

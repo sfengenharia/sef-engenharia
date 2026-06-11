@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { Eyebrow } from "../ui/eyebrow";
 import { AppCard } from "../ui/app-card";
 
@@ -20,6 +21,7 @@ const servicesData = [
     title: "Projetos Arquitetônicos",
     description:
       "Planta baixa, cortes, fachadas e estudo 3D — do residencial ao industrial. Compatibilizado com estrutura e instalações via BIM.",
+    href: "/servicos/projeto-arquitetonico",
   },
   {
     id: 2,
@@ -27,6 +29,7 @@ const servicesData = [
     title: "Projetos Hidrossanitários",
     description:
       "Abastecimento, distribuição de água, esgoto e drenagem pluvial. Projetos conforme NBR 5626 NBR 8160, com memória de cálculo completa.",
+    href: "/servicos/projeto-hidrossanitario",
   },
   {
     id: 3,
@@ -34,6 +37,7 @@ const servicesData = [
     title: "Projetos Elétricos",
     description:
       "Instalações em baixa e média tensão, subestações e SPDA. Conformidade com NBR 5410 e NBR 14039, com diagrama unifilar e memorial.",
+    href: "/servicos/projeto-eletrico",
   },
   {
     id: 4,
@@ -41,6 +45,7 @@ const servicesData = [
     title: "Projetos de Combate a Incêndio",
     description:
       "Detecção, alarme, sprinklers e hidrantes. Aprovação junto ao Corpo de Bombeiros, conforme NBR 13714, NBR 17240 e IT-CBMMG.",
+    href: "/servicos/projeto-combate-incendio",
   },
   {
     id: 5,
@@ -48,6 +53,7 @@ const servicesData = [
     title: "Projetos de Infraestrutura",
     description:
       "Pavimentação, drenagem pluvial, cabeamento estruturado e redes urbanas. Para loteamentos, condomínios industriais e obras públicas.",
+    href: "/servicos/projeto-infraestrutura",
   },
   {
     id: 6,
@@ -55,6 +61,7 @@ const servicesData = [
     title: "Projetos de Estrutura Metálica",
     description:
       "Galpões, coberturas e mezaninos industriais. Cálculo, detalhamento de ligações e lista de materiais conforme NBR 8681.",
+    href: "/servicos/projeto-estrutura-metalica",
   },
   {
     id: 7,
@@ -62,6 +69,7 @@ const servicesData = [
     title: "Projetos Estruturais de Concreto",
     description:
       "Cálculo de fundações, pilares vigas e lajes em concreto. Conforme NBR 6118 e NBR 6122 — do residencial ao industrial.",
+    href: "/servicos/projeto-estrutural-concreto",
   },
   {
     id: 8,
@@ -69,6 +77,7 @@ const servicesData = [
     title: "BIM — Building Information Modeling",
     description:
       "Modelagem integrada de todos os projetos com clash detection automático. Menos conflito na obra, extração de quantitativos e documentação para licitações públicas.",
+    href: "/servicos/bim",
   },
   {
     id: 9,
@@ -76,6 +85,7 @@ const servicesData = [
     title: "Ensaios Não Destrutivos",
     description:
       "Pacometria, esclerometria, ensaio PIT, ultrassom e análise de vibrações. Laudo técnico com responsabilidade assinada conforme normas ABNT.",
+    href: "/servicos/ensaios-nao-destrutivos",
   },
 ];
 
@@ -112,14 +122,17 @@ export function ServicesListSection() {
         >
           {servicesData.map((service) => (
             <motion.div key={service.id} variants={itemVariants}>
-              <AppCard
-                variant="image"
-                imageSrc={service.image}
-                title={service.title}
-                description={service.description}
-                buttonText="Ver mais"
-                buttonVariant="secondary"
-              />
+              <Link to={service.href} className="block h-full">
+                <AppCard
+                  variant="image"
+                  imageSrc={service.image}
+                  title={service.title}
+                  description={service.description}
+                  buttonText="Ver mais"
+                  buttonVariant="secondary"
+                  className="h-full"
+                />
+              </Link>
             </motion.div>
           ))}
         </motion.div>
