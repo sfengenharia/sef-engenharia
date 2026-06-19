@@ -100,6 +100,12 @@ npm run build    # build de produção
 npm run preview  # pré-visualiza o build
 ```
 
+## Como rodar o CMS (Sanity)
+```bash
+cd studio
+npm run dev
+```
+
 ---
 *Documentação mantida com rigor arquitetônico e design system unificado para interação
 segura com IA e Agentes Autônomos.*

@@ -31,6 +31,10 @@ lerna-debug.log*
 # Sanity (Fase 6 — studio/)
 studio/dist/
 studio/node_modules/
+studio/.sanity/
+studio/coverage/
+*.pem
+*.tsbuildinfo
 
 # Editor / OS
 .vscode/*
