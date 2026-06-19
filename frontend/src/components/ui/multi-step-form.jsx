@@ -10,13 +10,128 @@ import { Textarea } from "./textarea";
 export function MultiStepForm({ className }) {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    service: "",
+    message: "",
+    website_url: ""
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // null | "success" | "error"
+  const [errors, setErrors] = useState({});
 
   const nextStep = () => setStep(2);
   const prevStep = () => setStep(1);
 
-  const handleSubmit = (e) => {
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) {
+      newErrors.name = "Nome completo é obrigatório";
+    }
+    const phoneDigits = formData.phone.replace(/\D/g, "");
+    if (!phoneDigits || phoneDigits.length < 10) {
+      newErrors.phone = "Telefone inválido (mínimo 10 dígitos numéricos)";
+    }
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "E-mail inválido";
+    }
+    if (!formData.service) {
+      newErrors.service = "Selecione um tipo de serviço";
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Descreva brevemente seu projeto";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+
+    // Honeypot check: Abort silently if honeypot field is filled
+    if (formData.website_url) {
+      return;
+    }
+
+    if (!validate()) {
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus(null), 4000);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+      
+      if (!webhookUrl) {
+        // Fallback for development if not configured yet
+        console.warn("VITE_N8N_WEBHOOK_URL is not defined in the environment.");
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          company: "",
+          phone: "",
+          email: "",
+          service: "",
+          message: "",
+          website_url: ""
+        });
+        setErrors({});
+        setTimeout(() => {
+          setIsSubmitted(true);
+          setSubmitStatus(null);
+        }, 1000);
+        return;
+      }
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: formData.name,
+          empresa: formData.company,
+          telefone: formData.phone,
+          email: formData.email,
+          servico: formData.service,
+          mensagem: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          company: "",
+          phone: "",
+          email: "",
+          service: "",
+          message: "",
+          website_url: ""
+        });
+        setErrors({});
+        
+        setTimeout(() => {
+          setIsSubmitted(true);
+          setSubmitStatus(null);
+        }, 1500);
+      } else {
+        setSubmitStatus("error");
+        setTimeout(() => setSubmitStatus(null), 4000);
+      }
+    } catch (err) {
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus(null), 4000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const variants = {
@@ -62,6 +177,20 @@ export function MultiStepForm({ className }) {
 
             {/* Form Content */}
             <form onSubmit={handleSubmit} className="relative overflow-hidden min-h-[360px]">
+              {/* Honeypot anti-spam field */}
+              <div className="sr-only absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+                <Label htmlFor="website_url">Website URL</Label>
+                <input
+                  id="website_url"
+                  type="text"
+                  name="website_url"
+                  tabIndex="-1"
+                  value={formData.website_url}
+                  onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
+                  autoComplete="off"
+                />
+              </div>
+
               <AnimatePresence mode="wait">
                 {step === 1 && (
                   <motion.div
@@ -75,15 +204,33 @@ export function MultiStepForm({ className }) {
                   >
                     <div className="flex flex-col gap-2">
                       <Label htmlFor="name">Nome completo</Label>
-                      <Input id="name" placeholder="Ex: João Silva" />
+                      <Input
+                        id="name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Ex: João Silva"
+                      />
+                      {errors.name && <span className="text-red-500 text-xs font-sans mt-0.5">{errors.name}</span>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <Label htmlFor="company">Nome da empresa</Label>
-                      <Input id="company" placeholder="Sua empresa" />
+                      <Input
+                        id="company"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        placeholder="Sua empresa"
+                      />
                     </div>
                     <div className="flex flex-col gap-2">
                       <Label htmlFor="phone">Telefone / WhatsApp</Label>
-                      <Input id="phone" type="tel" placeholder="(00) 00000-0000" />
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="(00) 00000-0000"
+                      />
+                      {errors.phone && <span className="text-red-500 text-xs font-sans mt-0.5">{errors.phone}</span>}
                     </div>
                     
                     <div className="pt-4">
@@ -106,14 +253,22 @@ export function MultiStepForm({ className }) {
                   >
                     <div className="flex flex-col gap-2">
                       <Label htmlFor="email">E-mail corporativo</Label>
-                      <Input id="email" type="email" placeholder="seu@email.com" />
+                      <Input
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="seu@email.com"
+                      />
+                      {errors.email && <span className="text-red-500 text-xs font-sans mt-0.5">{errors.email}</span>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <Label htmlFor="service">Tipo de serviço</Label>
                       <div className="relative">
                         <select 
                           id="service"
-                          defaultValue=""
+                          value={formData.service}
+                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                           className="flex h-12 w-full appearance-none rounded-md border border-border bg-canvas px-3 py-2 text-sm font-sans text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors cursor-pointer"
                         >
                           <option value="" disabled className="text-muted">Selecione uma opção</option>
@@ -125,18 +280,31 @@ export function MultiStepForm({ className }) {
                           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                       </div>
+                      {errors.service && <span className="text-red-500 text-xs font-sans mt-0.5">{errors.service}</span>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <Label htmlFor="message">Descreva brevemente seu projeto</Label>
-                      <Textarea id="message" placeholder="Conte-nos um pouco sobre a sua necessidade..." />
+                      <Textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Conte-nos um pouco sobre a sua necessidade..."
+                      />
+                      {errors.message && <span className="text-red-500 text-xs font-sans mt-0.5">{errors.message}</span>}
                     </div>
                     
                     <div className="pt-4 flex gap-3">
-                      <Button type="button" variant="secondary" className="w-full" onClick={prevStep}>
+                      <Button type="button" variant="secondary" className="w-full" onClick={prevStep} disabled={isSubmitting}>
                         Voltar
                       </Button>
-                      <Button type="submit" variant="primary" className="w-full">
-                        Enviar &rarr;
+                      <Button type="submit" variant="primary" className="w-full" disabled={isSubmitting}>
+                        {isSubmitting
+                          ? "Enviando..."
+                          : submitStatus === "success"
+                          ? "Mensagem Enviada!"
+                          : submitStatus === "error"
+                          ? "Erro ao enviar"
+                          : "Enviar \u2192"}
                       </Button>
                     </div>
                   </motion.div>

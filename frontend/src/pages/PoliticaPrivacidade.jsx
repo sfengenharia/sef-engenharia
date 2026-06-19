@@ -84,10 +84,15 @@ export function PoliticaPrivacidade() {
           <a href={`mailto:${companyData.emailContato}`} className="text-primary hover:underline">
             {companyData.emailContato}
           </a>
-          {companyData.telefone && companyData.telefone.indexOf("PENDENTE") === -1
-            ? ` ou pelo telefone ${companyData.telefone}`
-            : ""}
-          .
+          {" ou pelos telefones "}
+          <a href={`tel:+55${companyData.telefoneGeral.replace(/\D/g, "")}`} className="text-primary hover:underline">
+            {companyData.telefoneGeral}
+          </a>
+          {" (Geral) ou "}
+          <a href={`tel:+55${companyData.telefoneComercial.replace(/\D/g, "")}`} className="text-primary hover:underline">
+            {companyData.telefoneComercial}
+          </a>
+          {" (Comercial)."}
         </p>
       </div>
     </main>

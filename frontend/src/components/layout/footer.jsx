@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import { cn } from "../../utils/cn";
 import { Button } from "../ui/button";
 import { TextLink } from "../ui/text-link";
-import { NewsletterInput } from "../ui/newsletter-input";
 
 export function Footer({ className }) {
   return (
@@ -13,7 +12,7 @@ export function Footer({ className }) {
         className
       )}
     >
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Coluna 1: Logo */}
         <div className="flex flex-col items-start gap-4">
           <a href="/" className="flex items-center shrink-0">
@@ -61,15 +60,6 @@ export function Footer({ className }) {
             <TextLink href="/termos-de-uso" className="text-white/80 hover:text-white">Termos de Serviço</TextLink>
             <TextLink href="/politica-de-privacidade#cookies" className="text-white/80 hover:text-white">Uso de Cookies</TextLink>
           </div>
-        </div>
-
-        {/* Coluna 5: Newsletter */}
-        <div className="flex flex-col items-start">
-          <h4 className="text-primary font-semibold text-lg mb-6">Fique por dentro</h4>
-          <p className="text-sm text-white/60 mb-4">
-            Receba insights e novidades sobre projetos de engenharia industrial.
-          </p>
-          <NewsletterInput />
         </div>
       </div>
 
