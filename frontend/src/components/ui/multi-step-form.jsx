@@ -271,10 +271,16 @@ export function MultiStepForm({ className }) {
                           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                           className="flex h-12 w-full appearance-none rounded-md border border-border bg-canvas px-3 py-2 text-sm font-sans text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors cursor-pointer"
                         >
-                          <option value="" disabled className="text-muted">Selecione uma opção</option>
-                          <option value="projeto">Projeto de Engenharia</option>
-                          <option value="laudo">Laudos Técnicos</option>
-                          <option value="gerenciamento">Gerenciamento de Obras</option>
+                          <option value="" disabled className="text-muted">Selecione um serviço...</option>
+                          <option value="Projetos Arquitetônicos">Projetos Arquitetônicos</option>
+                          <option value="Projetos Hidrossanitários">Projetos Hidrossanitários</option>
+                          <option value="Projetos Elétricos">Projetos Elétricos</option>
+                          <option value="Combate a Incêndio">Combate a Incêndio</option>
+                          <option value="Infraestrutura">Infraestrutura</option>
+                          <option value="Estrutura Metálica">Estrutura Metálica</option>
+                          <option value="Estruturais de Concreto">Estruturais de Concreto</option>
+                          <option value="BIM">BIM</option>
+                          <option value="Ensaios Não Destrutivos">Ensaios Não Destrutivos</option>
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-muted">
                           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
