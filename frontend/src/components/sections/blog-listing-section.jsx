@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Link } from "react-router-dom";
 import { Eyebrow } from "../ui/eyebrow";
 import { BlogCard } from "../ui/blog-card";
 import { Button } from "../ui/button";
 import { client, urlFor } from "../../lib/sanity";
+import { formatPostDate } from "../../utils/date";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -157,15 +159,15 @@ export function BlogListingSection() {
                 animate="show"
                 exit={{ opacity: 0, y: -10 }}
               >
-                <a href={`/blog/${post.slug}`} className="block h-full">
+                <Link to={`/blog/${post.slug}`} className="block h-full">
                   <BlogCard
-                    image={post.mainImage ? urlFor(post.mainImage).url() : ""}
-                    date={post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('pt-BR') : ""}
+                    image={post.mainImage ? urlFor(post.mainImage).width(800).url() : ""}
+                    date={formatPostDate(post.publishedAt)}
                     title={post.title}
                     excerpt={post.excerpt}
                     className="h-full cursor-pointer"
                   />
-                </a>
+                </Link>
               </motion.div>
             ))}
           </AnimatePresence>
