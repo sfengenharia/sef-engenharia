@@ -16,7 +16,7 @@ export function Footer({ className }) {
         {/* Coluna 1: Logo */}
         <div className="flex flex-col items-start gap-4">
           <a href="/" className="flex items-center shrink-0">
-            <img src="/logoBranca.png" alt="S&F Engenharia" className="h-[60px] w-auto brightness-0 invert" />
+            <img src="/logoBranca.png" alt="S&F Engenharia" className="h-[90px] w-auto brightness-0 invert" />
           </a>
         </div>
 
