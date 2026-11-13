@@ -36,8 +36,8 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/95 to-transparent" />
       </div>
 
-      {/* Container Principal */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex flex-col">
+      {/* Container Principal - AJUSTE AQUI: Adicionado pt-28 md:pt-32 para descer o texto */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex flex-col pt-28 md:pt-32">
 
         <motion.div
           variants={containerVariants}
