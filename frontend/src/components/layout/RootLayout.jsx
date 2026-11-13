@@ -10,7 +10,8 @@ export function RootLayout() {
           <Navbar />
         </div>
       </div>
-      <div className="flex-1 w-full">
+      {/* Adicionado padding-top para compensar a navbar fixed */}
+      <div className="flex-1 w-full pt-28 md:pt-32"> 
         <Outlet />
       </div>
       <Footer />
