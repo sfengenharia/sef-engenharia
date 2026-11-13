@@ -53,7 +53,7 @@ export function Navbar({ inline = false, className }) {
     >
       {/* Logo */}
       <a href="/" className="flex items-center shrink-0">
-        <img src="/logosef.svg" alt="S&F Engenharia" className="h-[50px] w-auto" />
+        <img src="/logoBranca.png" alt="S&F Engenharia" className="h-[50px] w-auto" />
       </a>
 
       {/* Desktop Navigation (hidden on mobile) */}
