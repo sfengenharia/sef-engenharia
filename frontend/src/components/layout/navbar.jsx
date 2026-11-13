@@ -57,7 +57,7 @@ export function Navbar({ inline = false, className }) {
       </a>
 
       {/* Desktop Navigation (hidden on mobile) */}
-      <div className="hidden md:flex items-center gap-1">
+      <div className="hidden md:flex items-center gap-2">
         {navLinks.map((link) => {
           const isActive = window.location.pathname === link.href;
           return (
