@@ -10,9 +10,10 @@ export function RootLayout() {
           <Navbar />
         </div>
       </div>
-      <div className="flex-1 w-full pt-[10px]">
+      <div className="flex-1 w-full">
         <Outlet />
       </div>
+      
       <Footer />
     </div>
   );
